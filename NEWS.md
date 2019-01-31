@@ -3,3 +3,4 @@
 * Added a `NEWS.md` file to track changes to the package.
 * Added README.
 * Updated README.
+* Added Lisence.
