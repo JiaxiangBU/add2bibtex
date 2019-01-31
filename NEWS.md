@@ -1,3 +1,5 @@
+# add2bibtex 0.1.0
+
 * Added the function, `add_bibtex`
 
 # add2bibtex 0.0.0.9000
