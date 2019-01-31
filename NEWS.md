@@ -13,6 +13,7 @@ Error in curl::curl_fetch_memory(url, handle = handle) :
 * Added an installation method from github and updated readme.
 * Added a coc.
 * Added a Travis badge and updated readme.
+* Added `more` choice in the `add_bibtex`.
 
 # add2bibtex 0.0.0.9000
 
@@ -20,4 +21,4 @@ Error in curl::curl_fetch_memory(url, handle = handle) :
 * Added README.
 * Updated README.
 * Added Lisence.
-* Added author
+* Added author.

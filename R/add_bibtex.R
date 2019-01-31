@@ -8,7 +8,7 @@
 #' @importFrom clipr write_clip
 #' @export
 
-add_bibtex <- function(type = 'online'){
+add_bibtex <- function(type = 'more'){
 
     if (type == 'online') {
         text <-
@@ -22,8 +22,13 @@ add_bibtex <- function(type = 'online'){
   urldate = {2019-01-31}
 }
         "
+    }
+    if (type == 'more') {
+        cat("More types are under development, please click")
+        cat("https://jiaxiangli.netlify.com/2018/03/10/bibtex/")
+    }
+
         clipr::write_clip(text)
         cat(text)
         cat("\nThis bibtex is already pasted on your clipboard.")
-    }
 }
