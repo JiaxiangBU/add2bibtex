@@ -10,6 +10,8 @@ Error in curl::curl_fetch_memory(url, handle = handle) :
   Timeout was reached: Operation timed out after 10000 milliseconds with 0 out of 0 bytes received
 ```
 
+* Added an installation method from github and updated readme.
+
 # add2bibtex 0.0.0.9000
 
 * Added a `NEWS.md` file to track changes to the package.
