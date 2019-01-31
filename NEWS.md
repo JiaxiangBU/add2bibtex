@@ -11,6 +11,7 @@ Error in curl::curl_fetch_memory(url, handle = handle) :
 ```
 
 * Added an installation method from github and updated readme.
+* Added a coc.
 
 # add2bibtex 0.0.0.9000
 
