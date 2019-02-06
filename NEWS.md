@@ -1,6 +1,7 @@
 # add2bibtex 0.2.0
 
 * Added the current date feature in the functions.
+* Added package glue.
 
 # add2bibtex 0.1.0
 
