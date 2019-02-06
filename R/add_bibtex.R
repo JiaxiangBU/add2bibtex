@@ -20,9 +20,11 @@ add_bibtex <- function(type = 'more'){
   year = 2019,
   howpublished = {add2bibtex},
   url = {https://github.com/JiaxiangBU/add2bibtex},
-  urldate = {{current_date}}
+  urldate = {<current_date>}
 }
         "
+    ,.open = "<"
+    ,.close = ">"
     )
     }
     if (type == 'more') {
