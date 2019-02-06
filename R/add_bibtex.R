@@ -6,12 +6,13 @@
 #' @author Jiaxiang Li
 #'
 #' @importFrom clipr write_clip
+#' @importFrom glue glue
 #' @export
 
 add_bibtex <- function(type = 'more'){
-
+    current_date <- Sys.Date()
     if (type == 'online') {
-        text <-
+        text <-glue(
         "
 @online{Li2019,
   author = {Jiaxiang Li},
@@ -19,9 +20,12 @@ add_bibtex <- function(type = 'more'){
   year = 2019,
   howpublished = {add2bibtex},
   url = {https://github.com/JiaxiangBU/add2bibtex},
-  urldate = {2019-01-31}
+  urldate = {<current_date>}
 }
         "
+    ,.open = "<"
+    ,.close = ">"
+    )
     }
     if (type == 'more') {
         cat("More types are under development, please click")
