@@ -10,3 +10,5 @@ LazyData: true
 RoxygenNote: 6.1.1
 Imports: 
     glue
+URL: https://github.com/JiaxiangBU/add2bibtex
+BugReports: https://github.com/JiaxiangBU/add2bibtex/issues
