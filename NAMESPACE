@@ -2,3 +2,4 @@
 
 export(add_bibtex)
 importFrom(clipr,write_clip)
+importFrom(glue,glue)

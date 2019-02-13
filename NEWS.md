@@ -3,6 +3,7 @@
 * Added the current date feature in the functions.
 * Added package glue.
 * Merged.
+* Built site.
 
 # add2bibtex 0.1.0
 
@@ -21,7 +22,6 @@ Error in curl::curl_fetch_memory(url, handle = handle) :
 * Added a Travis badge and updated readme.
 * Added `more` choice in the `add_bibtex`.
 * Commited R history
-* Built site.
 * Try `{` but fail.
 
 # add2bibtex 0.0.0.9000
