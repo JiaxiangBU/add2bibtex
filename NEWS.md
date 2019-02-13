@@ -4,6 +4,7 @@
 * Added package glue.
 * Merged.
 * Built site.
+* Added ignore files.
 
 # add2bibtex 0.1.0
 
