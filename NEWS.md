@@ -1,11 +1,15 @@
 # add2bibtex 0.3.0
 
 * Added the function `add_kaggle` to quickly write bibtex for kaggle kernel citation.
+* Merged.
 
 # add2bibtex 0.2.0
 
 * Added the current date feature in the functions.
 * Added package glue.
+* Merged.
+* Built site.
+* Added ignore files.
 
 # add2bibtex 0.1.0
 
