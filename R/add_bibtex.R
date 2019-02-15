@@ -7,6 +7,8 @@
 #'
 #' @importFrom clipr write_clip
 #' @importFrom glue glue
+#' @import stringr
+#' @importFrom xfun read_utf8
 #' @export
 
 add_bibtex <- function(type = 'more'){
@@ -35,4 +37,40 @@ add_bibtex <- function(type = 'more'){
         clipr::write_clip(text)
         cat(text)
         cat("\nThis bibtex is already pasted on your clipboard.")
+}
+
+add_kaggle <- function(url = ''){
+    if (!stringr::str_detect(url,'kaggle')) {
+        stop("It is not a kaggle url.")
+    }
+    text <- xfun::read_utf8(url) %>% stringr::str_flatten("\n")
+
+    author <- text %>% stringr::str_match('"displayName":"([A-z\\s]+)"') %>% .[2]
+
+    title <- text %>% stringr::str_match('<title>([A-z\\s|:]+)</title>') %>% .[2]
+
+    year <- text %>% stringr::str_match('"updatedTime":"([\\d]{4})') %>% .[2]
+
+    howpublished <- "Kaggle"
+
+    urldate <- Sys.Date()
+
+    first_name <- stringr::str_replace_all(author,'\\s','_')
+    alias <- stringr::str_c(first_name,year)
+
+    output <- glue::glue("@online{<<alias>>,
+    author = {<<author>>},
+    title = {<<title>>},
+    year = <<year>>,
+    howpublished = {<<howpublished>>},
+    url = {<<url>>},
+    urldate = {<<urldate>>}
+    }"
+    ,.open = "<<"
+    ,.close = ">>"
+    )
+
+    clipr::write_clip(output)
+    cat(output)
+    cat("\nThis bibtex is already pasted on your clipboard.")
 }
