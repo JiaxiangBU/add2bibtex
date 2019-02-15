@@ -1,3 +1,5 @@
+# add2bibtex 0.3.0
+
 * Added the function `add_kaggle` to quickly write bibtex for kaggle kernel citation.
 
 # add2bibtex 0.2.0
