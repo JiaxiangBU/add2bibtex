@@ -59,12 +59,12 @@ add_kaggle <- function(url = ''){
     alias <- stringr::str_c(first_name,year)
 
     output <- glue::glue("@online{<<alias>>,
-    author = {<<author>>},
-    title = {<<title>>},
-    year = <<year>>,
-    howpublished = {<<howpublished>>},
-    url = {<<url>>},
-    urldate = {<<urldate>>}
+        author = {<<author>>},
+        title = {<<title>>},
+        year = <<year>>,
+        howpublished = {<<howpublished>>},
+        url = {<<url>>},
+        urldate = {<<urldate>>}
     }"
     ,.open = "<<"
     ,.close = ">>"
