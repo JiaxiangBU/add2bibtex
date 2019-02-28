@@ -1,3 +1,5 @@
+* Added the function `add_datacamp`.
+
 # add2bibtex 0.4.0
 
 * Added the function `add_wechat`.

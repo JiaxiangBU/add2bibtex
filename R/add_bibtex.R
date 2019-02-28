@@ -93,13 +93,13 @@ add_kaggle <- function(url = ''){
     alias <- stringr::str_c(first_name,year)
 
     output <- glue::glue("@online{<<alias>>,
-    author = {<<author>>},
-    title = {<<title>>},
-    year = <<year>>,
-    howpublished = {<<howpublished>>},
-    url = {<<url>>},
-    urldate = {<<urldate>>}
-    }"
+  author = {<<author>>},
+  title = {<<title>>},
+  year = <<year>>,
+  howpublished = {<<howpublished>>},
+  url = {<<url>>},
+  urldate = {<<urldate>>}
+  }"
     ,.open = "<<"
     ,.close = ">>"
     )
@@ -142,7 +142,51 @@ add_wechat <- function(url = ''){
 
   urldate <- Sys.Date()
 
-  first_name <- stringr::str_replace_all(author,'\\s，','_')
+  first_name <- stringr::str_replace_all(author,'[\\s，]','_')
+  alias <- stringr::str_c(first_name,year)
+
+  output <- glue::glue("@online{<<alias>>,
+    author = {<<author>>},
+    title = {<<title>>},
+    year = <<year>>,
+    howpublished = {<<howpublished>>},
+    url = {<<url>>},
+    urldate = {<<urldate>>}
+    }"
+                       ,.open = "<<"
+                       ,.close = ">>"
+  )
+
+  clipr::write_clip(output)
+  cat(output)
+  cat("\nThis bibtex is already pasted on your clipboard.")
+}
+
+################################################################################
+# add_datacamp
+################################################################################
+
+add_datacamp <- function(url = ''){
+  if (!stringr::str_detect(url,'datacamp')) {
+    stop("It is not a datacamp url.")
+  }
+  text <- xml2::read_html(url)
+
+  author <- text %>%
+    html_nodes('.course__instructor-name') %>%
+    html_text()
+
+  title <- text %>%
+    html_nodes('.header-hero__title') %>%
+    html_text()
+
+  year <- Sys.Date() %>% str_sub(1,4)
+
+  howpublished <- "DataCamp"
+
+  urldate <- Sys.Date()
+
+  first_name <- stringr::str_replace_all(author,'[\\s，]','_')
   alias <- stringr::str_c(first_name,year)
 
   output <- glue::glue("@online{<<alias>>,
