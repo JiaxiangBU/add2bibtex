@@ -1,3 +1,10 @@
+* Added `@book` feature in the function `add_bibtex`.
+
+# add2bibtex 0.3.0
+
+* Added the function `add_kaggle` to quickly write bibtex for kaggle kernel citation.
+* Merged.
+
 # add2bibtex 0.2.0
 
 * Added the current date feature in the functions.
