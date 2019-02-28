@@ -12,6 +12,8 @@ Imports:
     glue,
     stringr,
     xfun,
-    clipr
+    clipr,
+    rvest,
+    xml2
 URL: https://github.com/JiaxiangBU/add2bibtex
 BugReports: https://github.com/JiaxiangBU/add2bibtex/issues

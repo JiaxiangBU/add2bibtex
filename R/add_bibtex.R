@@ -9,7 +9,14 @@
 #' @importFrom glue glue
 #' @import stringr
 #' @importFrom xfun read_utf8
+#' @import rvest
+#' @importFrom xml2 read_html
 #' @export
+
+
+################################################################################
+# add_bibtex
+################################################################################
 
 add_bibtex <- function(type = 'more'){
     current_date <- Sys.Date()
@@ -62,6 +69,10 @@ add_bibtex <- function(type = 'more'){
         cat("\nThis bibtex is already pasted on your clipboard.")
 }
 
+################################################################################
+# add_kaggle
+################################################################################
+
 add_kaggle <- function(url = ''){
     if (!stringr::str_detect(url,'kaggle')) {
         stop("It is not a kaggle url.")
@@ -96,4 +107,57 @@ add_kaggle <- function(url = ''){
     clipr::write_clip(output)
     cat(output)
     cat("\nThis bibtex is already pasted on your clipboard.")
+}
+
+################################################################################
+# add_wechat
+################################################################################
+
+add_wechat <- function(url = ''){
+  if (!stringr::str_detect(url,'weixin')) {
+    stop("It is not a weixin url.")
+  }
+  text <- xml2::read_html(url)
+
+  author <- text %>%
+    html_nodes('.rich_media_meta_text') %>%
+    html_text() %>%
+    .[!str_detect(.,'：')] %>%
+    str_trim() %>%
+    str_flatten('') %>%
+    str_extract("[\\p{Han}A-z\\s|:：——，]+")
+
+  title <- text %>%
+    html_nodes('#activity-name') %>%
+    html_text() %>%
+    str_extract("[\\p{Han}A-z\\s|:——]+") %>%
+    str_trim()
+
+  year <- Sys.Date() %>% str_sub(1,4)
+
+  howpublished <- text %>%
+    html_nodes('#js_name') %>%
+    html_text() %>%
+    str_trim()
+
+  urldate <- Sys.Date()
+
+  first_name <- stringr::str_replace_all(author,'\\s，','_')
+  alias <- stringr::str_c(first_name,year)
+
+  output <- glue::glue("@online{<<alias>>,
+    author = {<<author>>},
+    title = {<<title>>},
+    year = <<year>>,
+    howpublished = {<<howpublished>>},
+    url = {<<url>>},
+    urldate = {<<urldate>>}
+    }"
+                       ,.open = "<<"
+                       ,.close = ">>"
+  )
+
+  clipr::write_clip(output)
+  cat(output)
+  cat("\nThis bibtex is already pasted on your clipboard.")
 }
