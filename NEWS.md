@@ -1,3 +1,5 @@
+# add2bibtex 0.4.0
+
 * Added the function `add_wechat`.
 
 # add2bibtex 0.3.1
