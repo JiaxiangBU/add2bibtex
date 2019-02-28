@@ -1,6 +1,6 @@
 # add2bibtex 0.5.0
 
-* Added the function `add_datacamp`.
+* Added the function `add_datacamp` and finished [Github Issue 6](https://github.com/JiaxiangBU/add2bibtex/issues/6)
 
 # add2bibtex 0.4.0
 
