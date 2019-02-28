@@ -1,4 +1,4 @@
-* Added `@book` feature in the function `add_bibtex`.
+* Added `@book` feature in the function `add_bibtex` and finished [Github Issue 5](https://github.com/JiaxiangBU/add2bibtex/issues/5)
 
 # add2bibtex 0.3.0
 
