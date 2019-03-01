@@ -2,6 +2,7 @@
 
 * Added the function `add_datacamp` and finished [Github Issue 6](https://github.com/JiaxiangBU/add2bibtex/issues/6)
 * Merged
+* Added related packages for used functions `add_wechat`.
 
 # add2bibtex 0.4.0
 
