@@ -1,3 +1,16 @@
+# add2bibtex 0.5.0
+
+* Added the function `add_datacamp` and finished [Github Issue 6](https://github.com/JiaxiangBU/add2bibtex/issues/6)
+* Merged
+
+# add2bibtex 0.4.0
+
+* Added the function `add_wechat`.
+
+# add2bibtex 0.3.1
+
+* Added `@book` feature in the function `add_bibtex` and finished [Github Issue 5](https://github.com/JiaxiangBU/add2bibtex/issues/5)
+
 # add2bibtex 0.3.0
 
 * Added the function `add_kaggle` to quickly write bibtex for kaggle kernel citation.
