@@ -3,6 +3,7 @@
 * Added the function `add_kaggle` to quickly write bibtex for kaggle kernel citation.
 * Merged.
 * Added one-tab indent for `add_kaggle`
+* Merged
 
 # add2bibtex 0.2.0
 
