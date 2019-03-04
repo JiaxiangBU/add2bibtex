@@ -1,7 +1,9 @@
 # add2bibtex 0.5.0
 
 * Added the function `add_datacamp` and finished [Github Issue 6](https://github.com/JiaxiangBU/add2bibtex/issues/6)
-* Ignored `.Rhistory`.
+* Added related packages for used functions `add_wechat`.
+* Ignored `Rhistory`
+* Merged.
 
 # add2bibtex 0.4.0
 
@@ -15,6 +17,8 @@
 
 * Added the function `add_kaggle` to quickly write bibtex for kaggle kernel citation.
 * Merged.
+* Added one-tab indent for `add_kaggle`
+* Merged
 
 # add2bibtex 0.2.0
 
