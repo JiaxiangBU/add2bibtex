@@ -1,6 +1,7 @@
 # add2bibtex 0.5.1
 
 * Made the function set `add_bibtex` in neat way.
+* Made all functions in the set `add_bibtex` exported.
 
 # add2bibtex 0.5.0
 

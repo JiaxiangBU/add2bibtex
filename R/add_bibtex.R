@@ -68,7 +68,7 @@ add_bibtex <- function(type = 'more'){
 
 
 # add_kaggle --------------------------------------------------------------
-
+#' @export
 
 
 add_kaggle <- function(url = ''){
@@ -109,6 +109,7 @@ add_kaggle <- function(url = ''){
 
 
 # add_wechat --------------------------------------------------------------
+#' @export
 
 
 add_wechat <- function(url = ''){
@@ -162,6 +163,7 @@ add_wechat <- function(url = ''){
 }
 
 
+#' @export
 # add_datacamp ------------------------------------------------------------
 
 
