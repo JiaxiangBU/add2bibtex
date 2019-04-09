@@ -1,7 +1,7 @@
 #' Bib(La)tex template
 #'
 #' This function helps users to add Add a bib(La)tex template
-
+#'
 #' @return Character.
 #' @author Jiaxiang Li
 #'
@@ -13,10 +13,7 @@
 #' @import xml2
 #' @export
 
-
-################################################################################
-# add_bibtex
-################################################################################
+# add_bibtex --------------------------------------------------------------
 
 add_bibtex <- function(type = 'more'){
     current_date <- Sys.Date()
@@ -69,9 +66,10 @@ add_bibtex <- function(type = 'more'){
         cat("\nThis bibtex is already pasted on your clipboard.")
 }
 
-################################################################################
-# add_kaggle
-################################################################################
+
+# add_kaggle --------------------------------------------------------------
+
+
 
 add_kaggle <- function(url = ''){
     if (!stringr::str_detect(url,'kaggle')) {
@@ -109,9 +107,9 @@ add_kaggle <- function(url = ''){
     cat("\nThis bibtex is already pasted on your clipboard.")
 }
 
-################################################################################
-# add_wechat
-################################################################################
+
+# add_wechat --------------------------------------------------------------
+
 
 add_wechat <- function(url = ''){
   if (!stringr::str_detect(url,'weixin')) {
@@ -163,9 +161,9 @@ add_wechat <- function(url = ''){
   cat("\nThis bibtex is already pasted on your clipboard.")
 }
 
-################################################################################
-# add_datacamp
-################################################################################
+
+# add_datacamp ------------------------------------------------------------
+
 
 add_datacamp <- function(url = ''){
   if (!stringr::str_detect(url,'datacamp')) {
