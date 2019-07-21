@@ -2,11 +2,9 @@
 output: github_document
 ---
 
-  [![Travis build status](https://travis-ci.org/JiaxiangBU/add2bibtex.svg?branch=master)](https://travis-ci.org/JiaxiangBU/add2bibtex)
-
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r setup, include = FALSE}
+```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -16,18 +14,34 @@ knitr::opts_chunk$set(
 ```
 # add2bibtex
 
+<!-- badges: start -->
+  [![Travis build status](https://travis-ci.org/JiaxiangBU/add2bibtex.svg?branch=master)](https://travis-ci.org/JiaxiangBU/add2bibtex)
+  [![DOI](https://zenodo.org/badge/168483185.svg)](https://zenodo.org/badge/latestdoi/168483185)
+<!-- badges: end -->
+
 The goal of add2bibtex is to help users to easily to use bibtex or bibLatex.
 
 ## Installation
 
-You can install the released version of add2bibtex from [Github](https://github.com/JiaxiangBU/add2bibtex) with:
+You can install the released version of add2bibtex from [CRAN](https://CRAN.R-project.org) with:
 
-```{r eval=F}
-devtools::install_github('JiaxiangBU/add2bibtex')
+``` r
+install.packages("add2bibtex")
 ```
 
-```{r eval=F}
+And the development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("JiaxiangBU/add2bibtex")
+```
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example}
 library(add2bibtex)
+## basic example code
 ```
 
 ***
@@ -39,3 +53,4 @@ library(add2bibtex)
 <h4 align="center">**License**</h4>
 
 <h6 align="center">GPL-3 &copy; [Jiaxiang Li](LICENSE.md)</h6>
+
