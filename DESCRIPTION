@@ -1,8 +1,8 @@
 Package: add2bibtex
-Title: What the Package Does (one line, title case)
+Title: Easily Adding Bibliographies and Citations.
 Version: 0.5.1
 Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Description: Easily Adding Bibliographies and Citations.
 Depends: R (>= 3.5.1)
 License: GPL-3
 Encoding: UTF-8
