@@ -15,7 +15,6 @@ knitr::opts_chunk$set(
 # add2bibtex
 
 <!-- badges: start -->
-  [![Travis build status](https://travis-ci.org/JiaxiangBU/add2bibtex.svg?branch=master)](https://travis-ci.org/JiaxiangBU/add2bibtex)
   [![DOI](https://zenodo.org/badge/168483185.svg)](https://zenodo.org/badge/latestdoi/168483185)
 <!-- badges: end -->
 
@@ -44,13 +43,25 @@ library(add2bibtex)
 ## basic example code
 ```
 
+## Citations
+
+```{r include=FALSE}
+citations <- add2pkg::add_zenodo_citation("README.Rmd")
+```
+
+```{r echo=FALSE, results='asis'}
+cat(citations$Cite)
+```
+
+```{r echo=FALSE, results='asis'}
+cat(paste0("```BibTex\n",citations$BibTex,"\n```"))
+```
+
+```{r echo=FALSE, results='asis'}
+cat(citations$Comments)
+```
+
 ***
 
-<h4 align="center">**Code of Conduct**</h4>
-
-<h6 align="center">Please note that the 'add2md' project is released with a [Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md).<br>By contributing to this project, you agree to abide by its terms.</h6>
-
-<h4 align="center">**License**</h4>
-
-<h6 align="center">GPL-3 &copy; [Jiaxiang Li](LICENSE.md)</h6>
+`r add2pkg::add_disclaimer("Jiaxiang Li")`
 
