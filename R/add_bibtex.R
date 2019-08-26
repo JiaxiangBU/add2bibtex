@@ -56,6 +56,22 @@ add_bibtex <- function(type = 'more'){
     )
     }
 
+    if (type == 'manual') {
+        text <-glue(
+        "
+@manual{Li2019,
+  title = {add2bibtex: Add bib(La)tex},
+  subtitle = {Easily Adding Bibliographies and Citations},
+  author = {Jiaxiang Li},
+  year = {2019},
+  url = {https://github.com/JiaxiangBU/add2bibtex}
+}
+        "
+    ,.open = "<"
+    ,.close = ">"
+    )
+    }
+
     if (type == 'more') {
         cat("More types are under development, please click")
         cat("https://jiaxiangli.netlify.com/2018/03/10/bibtex/")
