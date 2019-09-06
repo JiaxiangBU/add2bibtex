@@ -135,7 +135,7 @@ add_wechat <- function(url = ''){
   text <- xml2::read_html(url)
 
   author <- text %>%
-    rvest::html_nodes('.rich_media_meta_text') %>%
+    rvest::html_nodes('#js_author_name') %>%
     rvest::html_text() %>%
     .[!stringr::str_detect(.,'：')] %>%
     stringr::str_trim() %>%
