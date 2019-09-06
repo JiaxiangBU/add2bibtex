@@ -1,4 +1,4 @@
-#' Bib(La)tex template
+#' BibTex and BibLaTex template
 #'
 #' This function helps users to add Add a bib(La)tex template
 #'
@@ -15,11 +15,11 @@
 
 # add_bibtex --------------------------------------------------------------
 
-add_bibtex <- function(type = 'more'){
-    current_date <- Sys.Date()
-    if (type == 'online') {
-        text <-glue(
-        "
+add_bibtex <- function(type = 'more') {
+  current_date <- Sys.Date()
+  if (type == 'online') {
+    text <- glue::glue(
+      "
 @online{Li2019,
   author = {Jiaxiang Li},
   title = {add2bibtex: Add bib(La)tex},
@@ -29,14 +29,14 @@ add_bibtex <- function(type = 'more'){
   urldate = {<current_date>}
 }
         "
-    ,.open = "<"
-    ,.close = ">"
+  , .open = "<"
+  , .close = ">"
     )
-    }
+  }
 
-    if (type == 'book') {
-        text <-glue(
-        "
+if (type == 'book') {
+  text <- glue::glue(
+    "
 @book{Li2019,
   author    = {Jiaxiang Li},
   title     = {add2bibtex: Add bib(La)tex},
@@ -51,14 +51,14 @@ add_bibtex <- function(type = 'more'){
   isbn      = {111111111}
 }
         "
-    ,.open = "<"
-    ,.close = ">"
-    )
-    }
+, .open = "<"
+, .close = ">"
+  )
+}
 
-    if (type == 'manual') {
-        text <-glue(
-        "
+if (type == 'manual') {
+  text <- glue::glue(
+    "
 @manual{Li2019,
   title = {add2bibtex: Add bib(La)tex},
   subtitle = {Easily Adding Bibliographies and Citations},
@@ -67,19 +67,17 @@ add_bibtex <- function(type = 'more'){
   url = {https://github.com/JiaxiangBU/add2bibtex}
 }
         "
-    ,.open = "<"
-    ,.close = ">"
-    )
-    }
+, .open = "<"
+, .close = ">"
+  )
+}
 
-    if (type == 'more') {
-        cat("More types are under development, please click")
-        cat("https://jiaxiangli.netlify.com/2018/03/10/bibtex/")
-    }
+if (type == 'more') {
+  cat("More types are under development, please click")
+  cat("https://jiaxiangli.netlify.com/2018/03/10/bibtex/")
+}
 
-        clipr::write_clip(text)
-        cat(text)
-        cat("\nThis bibtex is already pasted on your clipboard.")
+clip_and_print(text)
 }
 
 
@@ -87,26 +85,30 @@ add_bibtex <- function(type = 'more'){
 #' @export
 
 
-add_kaggle <- function(url = ''){
-    if (!stringr::str_detect(url,'kaggle')) {
-        stop("It is not a kaggle url.")
-    }
-    text <- xfun::read_utf8(url) %>% stringr::str_flatten("\n")
+add_kaggle <- function(url = '') {
+  if (!stringr::str_detect(url, 'kaggle')) {
+    stop("It is not a kaggle url.")
+  }
+  text <- xfun::read_utf8(url) %>% stringr::str_flatten("\n")
 
-    author <- text %>% stringr::str_match('"displayName":"([A-z\\s]+)"') %>% .[2]
+  author <-
+    text %>% stringr::str_match('"displayName":"([A-z\\s]+)"') %>% .[2]
 
-    title <- text %>% stringr::str_match('<title>([A-z\\s|:]+)</title>') %>% .[2]
+  title <-
+    text %>% stringr::str_match('<title>([A-z\\s|:]+)</title>') %>% .[2]
 
-    year <- text %>% stringr::str_match('"updatedTime":"([\\d]{4})') %>% .[2]
+  year <-
+    text %>% stringr::str_match('"updatedTime":"([\\d]{4})') %>% .[2]
 
-    howpublished <- "Kaggle"
+  howpublished <- "Kaggle"
 
-    urldate <- Sys.Date()
+  urldate <- Sys.Date()
 
-    first_name <- stringr::str_replace_all(author,'\\s','_')
-    alias <- stringr::str_c(first_name,year)
+  first_name <- stringr::str_replace_all(author, '\\s', '_')
+  alias <- stringr::str_c(first_name, year)
 
-    output <- glue::glue("@online{<<alias>>,
+  output <- glue::glue(
+    "@online{<<alias>>,
         author = {<<author>>},
         title = {<<title>>},
         year = <<year>>,
@@ -114,13 +116,13 @@ add_kaggle <- function(url = ''){
         url = {<<url>>},
         urldate = {<<urldate>>}
   }"
-    ,.open = "<<"
-    ,.close = ">>"
-    )
+    ,
+    .open = "<<"
+    ,
+    .close = ">>"
+  )
 
-    clipr::write_clip(output)
-    cat(output)
-    cat("\nThis bibtex is already pasted on your clipboard.")
+  clip_and_print(output)
 }
 
 
@@ -128,8 +130,8 @@ add_kaggle <- function(url = ''){
 #' @export
 
 
-add_wechat <- function(url = ''){
-  if (!stringr::str_detect(url,'weixin')) {
+add_wechat <- function(url = '') {
+  if (!stringr::str_detect(url, 'weixin')) {
     stop("It is not a weixin url.")
   }
   text <- xml2::read_html(url)
@@ -137,7 +139,7 @@ add_wechat <- function(url = ''){
   author <- text %>%
     rvest::html_nodes('#js_author_name') %>%
     rvest::html_text() %>%
-    .[!stringr::str_detect(.,'：')] %>%
+    .[!stringr::str_detect(., '：')] %>%
     stringr::str_trim() %>%
     stringr::str_flatten('') %>%
     stringr::str_extract("[\\p{Han}A-z\\s|:：——，]+")
@@ -148,7 +150,7 @@ add_wechat <- function(url = ''){
     stringr::str_extract("[\\p{Han}A-z\\s|:——]+") %>%
     stringr::str_trim()
 
-  year <- Sys.Date() %>% str_sub(1,4)
+  year <- Sys.Date() %>% str_sub(1, 4)
 
   howpublished <- text %>%
     rvest::html_nodes('#js_name') %>%
@@ -157,11 +159,11 @@ add_wechat <- function(url = ''){
 
   urldate <- Sys.Date()
 
-  first_name <- stringr::str_replace_all(author,'[\\s，]','_')
-  alias <- stringr::str_c(first_name,year)
+  first_name <- stringr::str_replace_all(author, '[\\s，]', '_')
+  alias <- stringr::str_c(first_name, year)
 
   output <- glue::glue(
-"@online{<<alias>>,
+    "@online{<<alias>>,
   author = {<<author>>},
   title = {<<title>>},
   year = <<year>>,
@@ -169,13 +171,13 @@ add_wechat <- function(url = ''){
   url = {<<url>>},
   urldate = {<<urldate>>}
 }"
-                       ,.open = "<<"
-                       ,.close = ">>"
+    ,
+    .open = "<<"
+    ,
+    .close = ">>"
   )
 
-  clipr::write_clip(output)
-  cat(output)
-  cat("\nThis bibtex is already pasted on your clipboard.")
+  clip_and_print(output)
 }
 
 
@@ -183,8 +185,8 @@ add_wechat <- function(url = ''){
 # add_datacamp ------------------------------------------------------------
 
 
-add_datacamp <- function(url = ''){
-  if (!stringr::str_detect(url,'datacamp')) {
+add_datacamp <- function(url = '') {
+  if (!stringr::str_detect(url, 'datacamp')) {
     stop("It is not a datacamp url.")
   }
   text <- xml2::read_html(url)
@@ -197,16 +199,17 @@ add_datacamp <- function(url = ''){
     rvest::html_nodes('.header-hero__title') %>%
     rvest::html_text()
 
-  year <- Sys.Date() %>% str_sub(1,4)
+  year <- Sys.Date() %>% str_sub(1, 4)
 
   howpublished <- "DataCamp"
 
   urldate <- Sys.Date()
 
-  first_name <- stringr::str_replace_all(author,'[\\s，]','_')
-  alias <- stringr::str_c(first_name,year)
+  first_name <- stringr::str_replace_all(author, '[\\s，]', '_')
+  alias <- stringr::str_c(first_name, year)
 
-  output <- glue::glue("@online{<<alias>>,
+  output <- glue::glue(
+    "@online{<<alias>>,
     author = {<<author>>},
     title = {<<title>>},
     year = <<year>>,
@@ -214,11 +217,11 @@ add_datacamp <- function(url = ''){
     url = {<<url>>},
     urldate = {<<urldate>>}
     }"
-                       ,.open = "<<"
-                       ,.close = ">>"
+    ,
+    .open = "<<"
+    ,
+    .close = ">>"
   )
 
-  clipr::write_clip(output)
-  cat(output)
-  cat("\nThis bibtex is already pasted on your clipboard.")
+  clip_and_print(output)
 }
