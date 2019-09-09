@@ -38,17 +38,17 @@ library(add2bibtex)
 
 ## Citations
 
-Jiaxiang Li. (2019, July 21). JiaxiangBU/add2bibtex: add2bibtex 0.5.1
-(Version v0.5.1). Zenodo. <http://doi.org/10.5281/zenodo.3345141>
+Jiaxiang Li. (2019, September 9). JiaxiangBU/add2bibtex: add2bibtex
+0.5.2 (Version v0.5.2). Zenodo. <http://doi.org/10.5281/zenodo.3402657>
 
 ``` bibtex
-@misc{jiaxiang_li_2019_3345141,
+@misc{jiaxiang_li_2019_3402657,
   author       = {Jiaxiang Li},
-  title        = {JiaxiangBU/add2bibtex: add2bibtex 0.5.1},
-  month        = jul,
+  title        = {JiaxiangBU/add2bibtex: add2bibtex 0.5.2},
+  month        = sep,
   year         = 2019,
-  doi          = {10.5281/zenodo.3345141},
-  url          = {https://doi.org/10.5281/zenodo.3345141}
+  doi          = {10.5281/zenodo.3402657},
+  url          = {https://doi.org/10.5281/zenodo.3402657}
 }
 ```
 
