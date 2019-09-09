@@ -1,3 +1,7 @@
+* Updated title and description in `DESC`.
+* Added the dependencies for the functions.
+* Added the function `add_wechat`.
+
 # add2bibtex 0.5.1
 
 * Made the function set `add_bibtex` in a neat way.
