@@ -1,3 +1,5 @@
+# add2bibtex 0.5.2
+
 * Updated title and description in `DESC`.
 * Added the dependencies for the functions.
 * Added the function `add_wechat`.

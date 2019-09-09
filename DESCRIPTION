@@ -1,6 +1,6 @@
 Package: add2bibtex
 Title: Add To BibTex
-Version: 0.5.1
+Version: 0.5.2
 Authors@R:
     person(given = "Jiaxiang",
            family = "Li",
