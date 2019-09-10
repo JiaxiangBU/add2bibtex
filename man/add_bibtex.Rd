@@ -2,7 +2,7 @@
 % Please edit documentation in R/add_bibtex.R
 \name{add_bibtex}
 \alias{add_bibtex}
-\title{Bib(La)tex template}
+\title{BibTex and BibLaTex template}
 \usage{
 add_bibtex(type = "more")
 }
