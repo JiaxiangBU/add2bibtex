@@ -45,11 +45,13 @@ add_wechat <- function(url = '') {
 }
 
 #' @importFrom rvest html_nodes html_text
+#' @importFrom stringr str_trim
 get_wechat_raw_text <- function(html, pattern) {
     html %>%
         rvest::html_nodes(pattern) %>%
         rvest::html_text() %>%
-        max
+        max %>%
+        stringr::str_trim()
 }
 
 #' @importFrom stringr str_detect str_trim str_flatten str_extract str_remove_all str_trim str_replace_all

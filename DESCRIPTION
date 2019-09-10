@@ -23,3 +23,7 @@ Imports:
     magrittr
 URL: https://github.com/JiaxiangBU/add2bibtex
 BugReports: https://github.com/JiaxiangBU/add2bibtex/issues
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
