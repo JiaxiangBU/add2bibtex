@@ -79,22 +79,24 @@ get_amazon_cn_date <- function(html) {
     date_text <-
         html %>%
         get_amazon_cn_html_sub2() %>%
-        str_extract("\\d{4}年\\d+月") %>%
-        max(na.rm = TRUE)
+        stringr::str_subset("\\d{4}年\\d+月") %>%
+        stringr::str_extract("\\d{4}年\\d+月")
     return(date_text)
 }
 
-get_amazon_cn_year <- function(date_text) {
+get_amazon_cn_year <- function(html) {
     year_text <-
-        date_text %>%
+        html %>%
+        get_amazon_cn_date() %>%
         str_extract("\\d{4}年") %>%
         str_extract("\\d{4}")
     return(year_text)
 }
 
-get_amazon_cn_month <- function(date_text) {
+get_amazon_cn_month <- function(html) {
     month_text <-
-        date_text %>%
+        html %>%
+        get_amazon_cn_date() %>%
         str_extract("\\d+月") %>%
         str_extract("\\d+")
     return(month_text)
@@ -113,15 +115,15 @@ get_amazon_cn_author <- function(html) {
     return(author_text)
 }
 
+#' Create BibTex from an Amazon.cn book
+#'
 #' @importFrom xml2 read_html
 #' @importFrom glue glue
 #' @importFrom stringr str_replace_all
 #' @export
 add_amazon_cn <- function(url) {
     html <-
-        xml2::read_html(
-            url
-        )
+        xml2::read_html(url)
     author <- get_amazon_cn_author(html)
     title <- get_amazon_cn_title(html)
     publisher <- get_amazon_cn_publisher(html)
