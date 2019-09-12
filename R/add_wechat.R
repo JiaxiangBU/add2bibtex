@@ -42,6 +42,7 @@ add_wechat <- function(url = '') {
   )
 
   clip_and_print(output)
+  invisible(output)
 }
 
 #' @importFrom rvest html_nodes html_text
