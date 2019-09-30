@@ -79,8 +79,11 @@ is_wechat_author <- function(text, pattern) {
         is.na()
 }
 
+#' Extract the title of a WeChat article.
+#'
 #' @importFrom rvest html_nodes html_text
 #' @importFrom stringr str_trim
+#' @export
 get_wechat_title <- function(text) {
     title <- text %>%
         rvest::html_nodes('#activity-name') %>%
