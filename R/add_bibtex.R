@@ -163,7 +163,7 @@ add_datacamp <- function(url = '') {
   clip_and_print(output)
 }
 
-#' @importFrom zeallot "%<-%`"
+#' @import zeallot
 #' @export
 add_zhihu <-
   function(input = "R语言Logistic回归建模后如何计算KS值？ - 李家翔的回答 - 知乎
