@@ -151,23 +151,75 @@ add_datacamp <- function(url = '') {
 
   urldate <- Sys.Date()
 
-  first_name <- stringr::str_replace_all(author, '[\\s，]', '_')
-  alias <- stringr::str_c(first_name, year)
-
-  output <- glue::glue(
-    "@online{<<alias>>,
-    author = {<<author>>},
-    title = {<<title>>},
-    year = <<year>>,
-    howpublished = {<<howpublished>>},
-    url = {<<url>>},
-    urldate = {<<urldate>>}
-    }"
-    ,
-    .open = "<<"
-    ,
-    .close = ">>"
-  )
+  output <-
+    glue_bibtex(
+      url = url,
+      year = year,
+      howpublished = howpublished,
+      author = author,
+      title = title
+    )
 
   clip_and_print(output)
 }
+
+#' @importFrom zeallot "%<-%`"
+#' @export
+add_zhihu <-
+  function(input = "R语言Logistic回归建模后如何计算KS值？ - 李家翔的回答 - 知乎
+https://www.zhihu.com/question/31818886/answer/501606399") {
+    library(zeallot)
+    c(text, url) %<-% {
+      input %>%
+        str_split("\n") %>%
+        .[[1]]
+    }
+    c(title, author, howpublished) %<-% {
+      text %>%
+        str_split(" - ") %>%
+        .[[1]]
+    }
+    title <- title %>% str_squish()
+    author <- author %>% str_squish() %>% str_remove("的回答")
+    howpublished <- howpublished %>% str_squish()
+
+    year <- Sys.Date() %>% str_sub(1, 4)
+
+    urldate <- Sys.Date()
+
+    output <-
+      glue_bibtex(
+        url = url,
+        year = year,
+        howpublished = howpublished,
+        author = author,
+        title = title
+      )
+
+    clip_and_print(output)
+  }
+
+
+glue_bibtex <-
+  function(url, year, howpublished, author, title) {
+    urldate <- Sys.Date()
+
+    first_name <- stringr::str_replace_all(author, '[\\s，]', '_')
+    alias <- stringr::str_c(first_name, year)
+
+    glue::glue(
+      "@online{<<alias>>,
+      author = {<<author>>},
+      title = {<<title>>},
+      year = <<year>>,
+      howpublished = {<<howpublished>>},
+      url = {<<url>>},
+      urldate = {<<urldate>>}
+      }"
+      ,
+      .open = "<<"
+      ,
+      .close = ">>"
+    )
+
+  }
