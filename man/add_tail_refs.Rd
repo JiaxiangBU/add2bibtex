@@ -6,7 +6,7 @@
 \usage{
 
   add_tail_refs(path = "jiangning_weaving/analysis/para_length_5_notes.Rmd",
-  append_text = "[@吴蔚_2017江宁织造]")
+  append_text = "[@lastname2020")
 }
 \arguments{
 \item{path}{The RMarkdown document path.}
