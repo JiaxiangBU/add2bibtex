@@ -1,7 +1,10 @@
+globalVariables(c(".", "text"))
+
 #' BibTex and BibLaTex template
 #'
 #' This function helps users to add Add a bib(La)tex template
 #'
+#' @param type Character, by default \code{"more"}
 #' @return Character.
 #' @author Jiaxiang Li
 #'
@@ -81,10 +84,10 @@ clip_and_print(text)
 }
 
 
-# add_kaggle --------------------------------------------------------------
+#' Add BibTex for a Kaggle URL.
+#' @param url URL.
 #' @export
-
-
+# add_kaggle --------------------------------------------------------------
 add_kaggle <- function(url = '') {
   if (!stringr::str_detect(url, 'kaggle')) {
     stop("It is not a kaggle url.")
@@ -126,11 +129,10 @@ add_kaggle <- function(url = '') {
 }
 
 
-
+#' Add BibTex for a DataCamp URL.
+#' @param url URL.
 #' @export
 # add_datacamp ------------------------------------------------------------
-
-
 add_datacamp <- function(url = '') {
   if (!stringr::str_detect(url, 'datacamp')) {
     stop("It is not a datacamp url.")
@@ -163,12 +165,13 @@ add_datacamp <- function(url = '') {
   clip_and_print(output)
 }
 
+#' Add BibTex for a Zhihu URL.
 #' @import zeallot
+#' @param input The Zhihu shared text.
 #' @export
 add_zhihu <-
-  function(input = "R语言Logistic回归建模后如何计算KS值？ - 李家翔的回答 - 知乎
-https://www.zhihu.com/question/31818886/answer/501606399") {
-    library(zeallot)
+  function(input = "") {
+    # library(zeallot)
     c(text, url) %<-% {
       input %>%
         str_split("\n") %>%
@@ -180,7 +183,7 @@ https://www.zhihu.com/question/31818886/answer/501606399") {
         .[[1]]
     }
     title <- title %>% str_squish()
-    author <- author %>% str_squish() %>% str_remove("的回答")
+    author <- author %>% str_squish() %>% str_remove("\u7684\u56de\u7b54")
     howpublished <- howpublished %>% str_squish()
 
     year <- Sys.Date() %>% str_sub(1, 4)
@@ -204,7 +207,7 @@ glue_bibtex <-
   function(url, year, howpublished, author, title) {
     urldate <- Sys.Date()
 
-    first_name <- stringr::str_replace_all(author, '[\\s，]', '_')
+    first_name <- stringr::str_replace_all(author, '[\\s\uff0c]', '_')
     alias <- stringr::str_c(first_name, year)
 
     glue::glue(

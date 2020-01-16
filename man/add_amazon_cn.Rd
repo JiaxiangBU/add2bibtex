@@ -6,6 +6,9 @@
 \usage{
 add_amazon_cn(url)
 }
+\arguments{
+\item{url}{URL.}
+}
 \description{
 Create BibTex from an Amazon.cn book
 }

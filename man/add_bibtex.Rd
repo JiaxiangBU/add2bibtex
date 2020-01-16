@@ -6,6 +6,9 @@
 \usage{
 add_bibtex(type = "more")
 }
+\arguments{
+\item{type}{Character, by default \code{"more"}}
+}
 \value{
 Character.
 }

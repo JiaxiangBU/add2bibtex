@@ -1,17 +1,11 @@
 # setup -------------------------------------------------------------------
 
-
-
+library(devtools)
+use_git()
 
 library(devtools)
-# use_git()
-
-# https://github.com/JiaxiangBU/add2impala/blob/master/DESCRIPTION
-file.edit("DESCRIPTION")
-library(devtools)
-
-use_build_ignore("dev_history.R")
-use_git_ignore(".Rhistory")
+usethis::use_build_ignore("dev_history_r_pkg.R")
+usethis::use_git_ignore("dev_history_r_pkg.R")
 use_roxygen_md()
 use_pipe()
 library(magrittr)
@@ -19,39 +13,76 @@ library(magrittr)
 options(usethis.full_name = "Jiaxiang Li")
 use_mit_license()
 
-
-# rm packrat --------------------------------------------------------------
-
 # rm -rf packrat
-
 
 # desc --------------------------------------------------------------------
 
-add2pkg::add_me(is_paste = TRUE)
-file.edit("DESCRIPTION")
+library(usethis)
+add2pkg::create_desc()
+author_info <- add2pkg::add_me(is_paste = TRUE)
+desc_lines <- readr::read_lines("DESCRIPTION")
+desc_lines[5] <- author_info
+desc_lines %>% readr::write_lines("DESCRIPTION")
+# file.edit("DESCRIPTION")
+library(tidyverse)
+
+# prettify ----------------------------------------------------------------
+
+if (file.exists("README.Rmd")) {
+    file.rename("README.Rmd", "README-bak.Rmd")
+    file.edit("README-bak.Rmd")
+}
+use_readme_rmd()
+read_lines("README.Rmd")[1:20] %>%
+    c("") %>%
+    c('`r add2pkg::add_disclaimer("Jiaxiang Li")`') %>%
+    write_lines("README.Rmd")
+file.remove("README-bak.Rmd")
+file.edit("README.Rmd")
+rmarkdown::render("README.Rmd")
+rstudioapi::viewer("README.html")
+file.remove("README.html")
+
+# add commit --------------------------------------------------------------
+
+git2r::add(path = ".")
+glue::glue("Add metadata
+
+1. license
+1. readme
+1. namespace
+1. desc
+1. coc
+1. `%>%`
+") %>% git2r::commit(message = .)
+
+
+
+git2r::remote_add(name = "origin",
+                  url = glue::glue("https://github.com/JiaxiangBU/{add2pkg::proj_name()}.git"))
+git2r::push(name = 'origin', refspec = "refs/heads/master", cred = git2r::cred_token(),
+            set_upstream = TRUE
+            # Only one
+            )
 
 # coding ------------------------------------------------------------------
 
 # add title
-use_r("utils.R")
-
-# prettify ----------------------------------------------------------------
-
-use_readme_rmd()
-# help translate XGBoost model R object into SQL statement.
-file.edit("DESCRIPTION")
-rmarkdown::render("README.Rmd")
-file.remove("README.html")
-
 
 # build -------------------------------------------------------------------
 
+library(devtools)
 document()
-# load_all()
+load_all()
+
+library(devtools)
+document()
 install()
 
-
 # commit
+
+git2r::add(path = ".")
+git2r::commit(message = "")
 
 # release -----------------------------------------------------------------
 
@@ -59,18 +90,6 @@ use_news_md()
 file.edit("NEWS.md")
 use_version()
 usethis::use_github_release()
-
-
-# add disclaimer ----------------------------------------------------------
-
-file.edit("DESCRIPTION")
-clipr::write_clip('`r add2pkg::add_disclaimer("Jiaxiang Li")`')
-file.edit("README.Rmd")
-rmarkdown::render("README.Rmd")
-rstudioapi::viewer("README.html")
-file.remove("README.html")
-usethis::use_code_of_conduct()
-
 
 # publish -----------------------------------------------------------------
 
@@ -84,7 +103,7 @@ file.edit("NEWS.md")
 use_github_release()
 rmarkdown::render("README.Rmd")
 rstudioapi::viewer("README.html")
-safely(file.remove)("README.html")
+purrr::safely(file.remove)("README.html")
 # 因为会更新 citations，但是要等一会。
 # publish release
 
@@ -113,19 +132,11 @@ file.edit("README.Rmd")
 # 需要等一段时间，有时候 doi 没有显示出来
 rmarkdown::render("README.Rmd")
 rstudioapi::viewer("README.html")
-safely(file.remove)("README.html")
-
+purrr::safely(file.remove)("README.html")
 
 # add vignette ------------------------------------------------------------
 
 use_vignette("lift_chart")
-
-# build -------------------------------------------------------------------
-
-document()
-# load_all()
-install()
-
 
 # pkgdown -----------------------------------------------------------------
 
@@ -134,10 +145,13 @@ pkgdown::build_site()
 end_time <- lubridate::now()
 end_time - start_time
 
+git2r::add(path = ".")
+git2r::commit(message = "update pkgdown website")
+
 # add examlpes ------------------------------------------------------------
 
 clipr::read_clip() %>%
-    str_c("#' ", .) %>%
+    stringr::str_c("#' ", .) %>%
     clipr::write_clip()
 
 clipr::read_clip() %>%
@@ -151,139 +165,7 @@ file_copy("dev_history_r_pkg.R", "../dev_history/refs/dev_history_r_pkg.R",
           overwrite = TRUE)
 # open it!
 
-# setup -------------------------------------------------------------------
 
+# push --------------------------------------------------------------------
 
-
-
-library(devtools)
-use_git_ignore(".Rhistory")
-use_git()
-
-# https://github.com/JiaxiangBU/add2impala/blob/master/DESCRIPTION
-file.edit("DESCRIPTION")
-library(devtools)
-
-use_build_ignore("dev_history.R")
-use_roxygen_md()
-use_pipe()
-library(magrittr)
-
-options(usethis.full_name = "Jiaxiang Li")
-use_mit_license()
-
-
-# rm packrat --------------------------------------------------------------
-
-# rm -rf packrat
-
-
-# desc --------------------------------------------------------------------
-
-add2pkg::add_me(is_paste = TRUE)
-file.edit("DESCRIPTION")
-
-# coding ------------------------------------------------------------------
-
-file.edit("R/add_bibtex.R")
-# add title
-
-# prettify ----------------------------------------------------------------
-
-use_readme_rmd()
-# help translate XGBoost model R object into SQL statement.
-file.edit("DESCRIPTION")
-rmarkdown::render("README.Rmd")
-file.remove("README.html")
-
-
-# build -------------------------------------------------------------------
-
-library(devtools)
-document()
-load_all()
-install()
-
-
-# commit
-
-# release -----------------------------------------------------------------
-
-use_news_md()
-file.edit("NEWS.md")
-use_version()
-usethis::use_github_release()
-
-
-# add disclaimer ----------------------------------------------------------
-
-file.edit("DESCRIPTION")
-clipr::write_clip('`r add2pkg::add_disclaimer("Jiaxiang Li")`')
-file.edit("README.Rmd")
-rmarkdown::render("README.Rmd")
-rstudioapi::viewer("README.html")
-file.remove("README.html")
-usethis::use_code_of_conduct()
-
-
-# publish -----------------------------------------------------------------
-
-# open it and link it.
-# https://zenodo.org/account/settings/github/
-# push
-# make public
-use_news_md()
-use_version()
-file.edit("NEWS.md")
-use_github_release()
-rmarkdown::render("README.Rmd")
-rstudioapi::viewer("README.html")
-safely(file.remove)("README.html")
-# 因为会更新 citations，但是要等一会。
-# publish release
-
-
-# add badge and citation --------------------------------------------------
-
-# login zenodo and copy badge in markdown
-clipr::write_clip('## Citations
-
-```{r include=FALSE}
-citations <- add2pkg::add_zenodo_citation("README.Rmd")
-```
-
-```{r echo=FALSE, results=\'asis\'}
-cat(citations$Cite)
-```
-
-```{r echo=FALSE, results=\'asis\'}
-cat(paste0("```BibTex\\n",citations$BibTex,"\\n```"))
-```
-
-```{r echo=FALSE, results=\'asis\'}
-cat(citations$Comments)
-```')
-file.edit("README.Rmd")
-# 需要等一段时间，有时候 doi 没有显示出来
-rmarkdown::render("README.Rmd")
-rstudioapi::viewer("README.html")
-safely(file.remove)("README.html")
-
-
-# add vignette ------------------------------------------------------------
-
-use_vignette("lift_chart")
-
-# build -------------------------------------------------------------------
-
-document()
-# load_all()
-install()
-
-
-# pkgdown -----------------------------------------------------------------
-
-start_time <- lubridate::now()
-pkgdown::build_site()
-end_time <- lubridate::now()
-end_time - start_time
+git2r::push(name = 'origin', refspec = "refs/heads/master", cred = git2r::cred_token())

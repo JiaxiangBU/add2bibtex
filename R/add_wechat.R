@@ -1,6 +1,9 @@
+globalVariables(c(".", "text"))
+
+
+#' Add BibTex for a WeChat article URL.
+#' @param url URL.
 #' @export
-
-
 add_wechat <- function(url = '') {
     if (!stringr::str_detect(url, 'weixin')) {
         stop("It is not a weixin url.")
@@ -20,7 +23,7 @@ add_wechat <- function(url = '') {
 
     urldate <- Sys.Date()
 
-    first_name <- stringr::str_replace_all(author, '[\\s，]', '_')
+    first_name <- stringr::str_replace_all(author, '[\\s\uff0c]', '_')
     alias <- stringr::str_c(first_name, year)
 
     output <- glue::glue(
@@ -56,18 +59,18 @@ get_wechat_raw_text <- function(html, pattern) {
 get_wechat_author <- function(text) {
     if (is_wechat_author(text, '#js_author_name')) {
         get_wechat_raw_text(text, '#js_author_name') %>%
-            .[!stringr::str_detect(., '：')] %>%
+            .[!stringr::str_detect(., '\uff1a')] %>%
             stringr::str_trim() %>%
             stringr::str_flatten('') %>%
-            stringr::str_extract("[\\p{Han}A-z\\s|:：——，]+")
+            stringr::str_extract("[\\p{Han}A-z\\s|:\uff1a\u2014\u2014\uff0c]+")
     } else if (is_wechat_author(text, '#js_author')) {
         get_wechat_raw_text(text, '#js_author') %>%
-            stringr::str_remove_all("作者|等") %>%
+            stringr::str_remove_all("\u4f5c\u8005|\u7b49") %>%
             stringr::str_trim() %>%
             stringr::str_replace_all("\\s", " and ")
     } else if (is_wechat_author(text, ".rich_media_meta_text")) {
         get_wechat_raw_text(text, ".rich_media_meta_text") %>%
-            stringr::str_remove_all("作者|等") %>%
+            stringr::str_remove_all("\u4f5c\u8005|\u7b49") %>%
             stringr::str_trim() %>%
             stringr::str_replace_all("\\s", " and ")
     }
@@ -81,6 +84,7 @@ is_wechat_author <- function(text, pattern) {
 
 #' Extract the title of a WeChat article.
 #'
+#' @param text Character.
 #' @importFrom rvest html_nodes html_text
 #' @importFrom stringr str_trim
 #' @export

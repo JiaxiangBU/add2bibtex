@@ -1,3 +1,5 @@
+globalVariables(c(".", "text"))
+
 #' @importFrom rvest html_nodes html_text
 #' @importFrom readr read_lines
 #' @importFrom stringr str_subset str_trim
@@ -9,7 +11,7 @@ get_amazon_cn_table <- function(html) {
         readr::read_lines() %>%
         .[. != ""] %>%
         stringr::str_subset("^[\\p{Han}[A-z]]+") %>%
-        stringr::str_subset("：|:\\s") %>%
+        stringr::str_subset("\uff1a|:\\s") %>%
         stringr::str_trim()
 }
 
@@ -45,7 +47,7 @@ get_amazon_cn_html_sub <- function(html) {
 get_amazon_cn_publisher <- function(html) {
     html %>%
         get_amazon_cn_html_sub() %>%
-        str_extract("\\p{Han}+出版社") %>%
+        str_extract("\\p{Han}+\u51fa\u7248\u793e") %>%
         max(na.rm = TRUE)
 
 }
@@ -56,7 +58,7 @@ get_amazon_cn_edition <- function(html) {
     edition_text <-
         html %>%
         get_amazon_cn_html_sub() %>%
-        str_extract("第\\d+版") %>%
+        str_extract("\u7b2c\\d+\u7248") %>%
         str_extract("\\d+") %>%
         max(na.rm = TRUE)
     return(edition_text)
@@ -79,8 +81,8 @@ get_amazon_cn_date <- function(html) {
     date_text <-
         html %>%
         get_amazon_cn_html_sub2() %>%
-        stringr::str_subset("\\d{4}年\\d+月") %>%
-        stringr::str_extract("\\d{4}年\\d+月")
+        stringr::str_subset("\\d{4}\u5e74\\d+\u6708") %>%
+        stringr::str_extract("\\d{4}\u5e74\\d+\u6708")
     return(date_text)
 }
 
@@ -88,7 +90,7 @@ get_amazon_cn_year <- function(html) {
     year_text <-
         html %>%
         get_amazon_cn_date() %>%
-        str_extract("\\d{4}年") %>%
+        str_extract("\\d{4}\u5e74") %>%
         str_extract("\\d{4}")
     return(year_text)
 }
@@ -97,7 +99,7 @@ get_amazon_cn_month <- function(html) {
     month_text <-
         html %>%
         get_amazon_cn_date() %>%
-        str_extract("\\d+月") %>%
+        str_extract("\\d+\u6708") %>%
         str_extract("\\d+")
     return(month_text)
 }
@@ -117,6 +119,7 @@ get_amazon_cn_author <- function(html) {
 
 #' Create BibTex from an Amazon.cn book
 #'
+#' @param url URL.
 #' @importFrom xml2 read_html
 #' @importFrom glue glue
 #' @importFrom stringr str_replace_all

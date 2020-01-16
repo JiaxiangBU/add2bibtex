@@ -6,6 +6,9 @@
 \usage{
 get_wechat_title(text)
 }
+\arguments{
+\item{text}{Character.}
+}
 \description{
 Extract the title of a WeChat article.
 }
