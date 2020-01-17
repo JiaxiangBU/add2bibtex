@@ -1,6 +1,6 @@
 globalVariables(c(".", "text"))
 
-#' BibTex and BibLaTex template
+#' Bibtex and Biblatex Template
 #'
 #' This function helps users to add Add a bib(La)tex template
 #'
