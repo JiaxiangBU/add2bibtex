@@ -12,3 +12,6 @@ add_kaggle(url = "")
 \description{
 Add BibTex for a Kaggle URL.
 }
+\examples{
+add_kaggle("https://www.kaggle.com/lijiaxiang/stacking")
+}

@@ -15,10 +15,21 @@ globalVariables(c(".", "text"))
 #' @import rvest
 #' @import xml2
 #' @export
-
+#' @examples
+#' add_bibtex("online")
+#' add_bibtex("more")
+#' add_bibtex("book")
+#' add_bibtex("manual")
 # add_bibtex --------------------------------------------------------------
-
 add_bibtex <- function(type = 'more') {
+
+  if (type == 'more') {
+    return(
+      cat("More types are under development, please click\n\n
+          https://jiaxiangli.netlify.com/2018/03/10/bibtex/")
+    )
+  }
+
   current_date <- Sys.Date()
   if (type == 'online') {
     text <- glue::glue(
@@ -75,11 +86,6 @@ if (type == 'manual') {
   )
 }
 
-if (type == 'more') {
-  cat("More types are under development, please click")
-  cat("https://jiaxiangli.netlify.com/2018/03/10/bibtex/")
-}
-
 clip_and_print(text)
 }
 
@@ -87,6 +93,8 @@ clip_and_print(text)
 #' Add BibTex for a Kaggle URL.
 #' @param url URL.
 #' @export
+#' @examples
+#' add_kaggle("https://www.kaggle.com/lijiaxiang/stacking")
 # add_kaggle --------------------------------------------------------------
 add_kaggle <- function(url = '') {
   if (!stringr::str_detect(url, 'kaggle')) {
@@ -132,6 +140,8 @@ add_kaggle <- function(url = '') {
 #' Add BibTex for a DataCamp URL.
 #' @param url URL.
 #' @export
+#' @examples
+#' add_datacamp("https://www.datacamp.com/courses/extreme-gradient-boosting-with-xgboost")
 # add_datacamp ------------------------------------------------------------
 add_datacamp <- function(url = '') {
   if (!stringr::str_detect(url, 'datacamp')) {

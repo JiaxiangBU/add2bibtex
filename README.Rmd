@@ -43,25 +43,6 @@ library(add2bibtex)
 ## basic example code
 ```
 
-## Citations
-
-```{r include=FALSE}
-citations <- add2pkg::add_zenodo_citation("README.Rmd")
+```{r,child="vignettes/intro.Rmd"}
 ```
-
-```{r echo=FALSE, results='asis'}
-cat(citations$Cite)
-```
-
-```{r echo=FALSE, results='asis'}
-cat(paste0("```BibTex\n",citations$BibTex,"\n```"))
-```
-
-```{r echo=FALSE, results='asis'}
-cat(citations$Comments)
-```
-
-***
-
-`r add2pkg::add_disclaimer("Jiaxiang Li")`
 

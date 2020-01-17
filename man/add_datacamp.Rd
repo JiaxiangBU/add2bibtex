@@ -12,3 +12,6 @@ add_datacamp(url = "")
 \description{
 Add BibTex for a DataCamp URL.
 }
+\examples{
+add_datacamp("https://www.datacamp.com/courses/extreme-gradient-boosting-with-xgboost")
+}

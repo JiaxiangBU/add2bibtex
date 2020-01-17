@@ -36,52 +36,108 @@ library(add2bibtex)
 ## basic example code
 ```
 
-## Citations
-
-Jiaxiang Li. (2019, September 9). JiaxiangBU/add2bibtex: add2bibtex
-0.5.2 (Version v0.5.2). Zenodo. <http://doi.org/10.5281/zenodo.3402657>
-
-``` bibtex
-@misc{jiaxiang_li_2019_3402657,
-  author       = {Jiaxiang Li},
-  title        = {JiaxiangBU/add2bibtex: add2bibtex 0.5.2},
-  month        = sep,
-  year         = 2019,
-  doi          = {10.5281/zenodo.3402657},
-  url          = {https://doi.org/10.5281/zenodo.3402657}
-}
+``` r
+library(add2bibtex)
 ```
 
-If you use add2bibtex, I would be very grateful if you can add a
-citation in your published work. By citing add2bibtex, beyond
-acknowledging the work, you contribute to make it more visible and
-guarantee its growing and sustainability. For citation, please use the
-BibTex or the citation content.
+``` r
+add_kaggle("https://www.kaggle.com/lijiaxiang/stacking")
+#> @online{Jiaxiang_Li2019,
+#>       author = {Jiaxiang Li},
+#>       title = {stacking | Kaggle},
+#>       year = 2019,
+#>       howpublished = {Kaggle},
+#>       url = {https://www.kaggle.com/lijiaxiang/stacking},
+#>       urldate = {2020-01-17}
+#> }
+#> 
+#> 
+#> 
+#> This bibtex is already pasted on your clipboard.
+```
 
------
+``` r
+add_datacamp("https://www.datacamp.com/courses/extreme-gradient-boosting-with-xgboost")
+#> @online{Sergey_Fogelson2020,
+#> author = {Sergey Fogelson},
+#> title = {Extreme Gradient Boosting with XGBoost},
+#> year = 2020,
+#> howpublished = {DataCamp},
+#> url = {https://www.datacamp.com/courses/extreme-gradient-boosting-with-xgboost},
+#> urldate = {2020-01-17}
+#> }
+#> 
+#> 
+#> 
+#> This bibtex is already pasted on your clipboard.
+```
 
-<h4 align="center">
+``` r
+add_bibtex("book")
+#> @book{Li2019,
+#>   author    = {Jiaxiang Li},
+#>   title     = {add2bibtex: Add bib(La)tex},
+#>   publisher = {add2bibtex},
+#>   year      = 2019,
+#>   volume    = 1,
+#>   series    = 1,
+#>   address   = {Shanghai},
+#>   edition   = 1,
+#>   month     = 1,
+#>   note      = {An optional note},
+#>   isbn      = {111111111}
+#> }
+#> 
+#> 
+#> 
+#> This bibtex is already pasted on your clipboard.
+add_bibtex("manual")
+#> @manual{Li2019,
+#>   title = {add2bibtex: Add bib(La)tex},
+#>   subtitle = {Easily Adding Bibliographies and Citations},
+#>   author = {Jiaxiang Li},
+#>   year = {2019},
+#>   url = {https://github.com/JiaxiangBU/add2bibtex}
+#> }
+#> 
+#> 
+#> 
+#> This bibtex is already pasted on your clipboard.
+add_bibtex("online")
+#> @online{Li2019,
+#>   author = {Jiaxiang Li},
+#>   title = {add2bibtex: Add bib(La)tex},
+#>   year = 2019,
+#>   howpublished = {add2bibtex},
+#>   url = {https://github.com/JiaxiangBU/add2bibtex},
+#>   urldate = {2020-01-17}
+#> }
+#> 
+#> 
+#> 
+#> This bibtex is already pasted on your clipboard.
+add_bibtex("more")
+#> More types are under development, please click
+#> 
+#> 
+#>           https://jiaxiangli.netlify.com/2018/03/10/bibtex/
+```
 
-**Code of Conduct**
+``` r
+add_wechat("https://mp.weixin.qq.com/s/2-1taZ5o4uzVcGMe5u4P-A")
+#> Warning in max(.): 所有的参数都不存在; 回覆NA
 
-</h4>
-
-<h6 align="center">
-
-Please note that the `add2bibtex` project is released with a
-[Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md).<br>By
-contributing to this project, you agree to abide by its terms.
-
-</h6>
-
-<h4 align="center">
-
-**License**
-
-</h4>
-
-<h6 align="center">
-
-MIT © [Jiaxiang Li](LICENSE.md)
-
-</h6>
+#> Warning in max(.): 所有的参数都不存在; 回覆NA
+#> @online{王迪2020,
+#>   author = {王迪},
+#>   title = {案例分享 | TensorFlow 助力网易严选供应链需求预测（系列之四）},
+#>   year = 2020,
+#>   howpublished = {TensorFlow},
+#>   url = {https://mp.weixin.qq.com/s/2-1taZ5o4uzVcGMe5u4P-A},
+#>   urldate = {2020-01-17}
+#> }
+#> 
+#> 
+#> 
+#> This bibtex is already pasted on your clipboard.
+```

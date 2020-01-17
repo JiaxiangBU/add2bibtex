@@ -12,3 +12,6 @@ add_wechat(url = "")
 \description{
 Add BibTex for a WeChat article URL.
 }
+\examples{
+add_wechat("https://mp.weixin.qq.com/s/2-1taZ5o4uzVcGMe5u4P-A")
+}

@@ -15,6 +15,12 @@ Character.
 \description{
 This function helps users to add Add a bib(La)tex template
 }
+\examples{
+add_bibtex("online")
+add_bibtex("more")
+add_bibtex("book")
+add_bibtex("manual")
+}
 \author{
 Jiaxiang Li
 }

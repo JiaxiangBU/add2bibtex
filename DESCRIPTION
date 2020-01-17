@@ -1,5 +1,5 @@
 Package: add2bibtex
-Title: Add To BibTex
+Title: Add to Bibtex
 Version: 0.5.2
 Authors@R:
     person(given = "Jiaxiang",
@@ -27,5 +27,6 @@ URL: https://github.com/JiaxiangBU/add2bibtex
 BugReports: https://github.com/JiaxiangBU/add2bibtex/issues
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat (>= 2.1.0)
 VignetteBuilder: knitr

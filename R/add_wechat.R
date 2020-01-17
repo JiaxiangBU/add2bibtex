@@ -4,6 +4,8 @@ globalVariables(c(".", "text"))
 #' Add BibTex for a WeChat article URL.
 #' @param url URL.
 #' @export
+#' @examples
+#' add_wechat("https://mp.weixin.qq.com/s/2-1taZ5o4uzVcGMe5u4P-A")
 add_wechat <- function(url = '') {
     if (!stringr::str_detect(url, 'weixin')) {
         stop("It is not a weixin url.")

@@ -1,0 +1,40 @@
+---
+title: "intro"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{intro}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(add2bibtex)
+```
+
+```{r}
+add_kaggle("https://www.kaggle.com/lijiaxiang/stacking")
+```
+
+```{r}
+add_datacamp("https://www.datacamp.com/courses/extreme-gradient-boosting-with-xgboost")
+```
+
+```{r collapse=TRUE}
+add_bibtex("book")
+add_bibtex("manual")
+add_bibtex("online")
+add_bibtex("more")
+```
+
+```{r}
+add_wechat("https://mp.weixin.qq.com/s/2-1taZ5o4uzVcGMe5u4P-A")
+```
+
+
