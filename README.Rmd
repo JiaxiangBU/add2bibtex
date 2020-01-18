@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
   [![DOI](https://zenodo.org/badge/168483185.svg)](https://zenodo.org/badge/latestdoi/168483185)
+[![Travis build status](https://travis-ci.org/JiaxiangBU/add2bibtex.svg?branch=master)](https://travis-ci.org/JiaxiangBU/add2bibtex)
 <!-- badges: end -->
 
 The goal of add2bibtex is to help users to easily to use bibtex or bibLatex.

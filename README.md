@@ -6,6 +6,8 @@
 <!-- badges: start -->
 
 [![DOI](https://zenodo.org/badge/168483185.svg)](https://zenodo.org/badge/latestdoi/168483185)
+[![Travis build
+status](https://travis-ci.org/JiaxiangBU/add2bibtex.svg?branch=master)](https://travis-ci.org/JiaxiangBU/add2bibtex)
 <!-- badges: end -->
 
 The goal of add2bibtex is to help users to easily to use bibtex or
@@ -41,14 +43,14 @@ library(add2bibtex)
 ```
 
 ``` r
-add_kaggle("https://www.kaggle.com/lijiaxiang/stacking")
+add_kaggle("https://www.kaggle.com/lijiaxiang/stacking", is_paste = FALSE)
 #> @online{Jiaxiang_Li2019,
 #>       author = {Jiaxiang Li},
 #>       title = {stacking | Kaggle},
 #>       year = 2019,
 #>       howpublished = {Kaggle},
 #>       url = {https://www.kaggle.com/lijiaxiang/stacking},
-#>       urldate = {2020-01-17}
+#>       urldate = {2020-01-18}
 #> }
 #> 
 #> 
@@ -57,14 +59,17 @@ add_kaggle("https://www.kaggle.com/lijiaxiang/stacking")
 ```
 
 ``` r
-add_datacamp("https://www.datacamp.com/courses/extreme-gradient-boosting-with-xgboost")
+add_datacamp(
+  "https://www.datacamp.com/courses/extreme-gradient-boosting-with-xgboost",
+  is_paste = FALSE
+)
 #> @online{Sergey_Fogelson2020,
 #> author = {Sergey Fogelson},
 #> title = {Extreme Gradient Boosting with XGBoost},
 #> year = 2020,
 #> howpublished = {DataCamp},
 #> url = {https://www.datacamp.com/courses/extreme-gradient-boosting-with-xgboost},
-#> urldate = {2020-01-17}
+#> urldate = {2020-01-18}
 #> }
 #> 
 #> 
@@ -73,7 +78,7 @@ add_datacamp("https://www.datacamp.com/courses/extreme-gradient-boosting-with-xg
 ```
 
 ``` r
-add_bibtex("book")
+add_bibtex("book", is_paste = FALSE)
 #> @book{Li2019,
 #>   author    = {Jiaxiang Li},
 #>   title     = {add2bibtex: Add bib(La)tex},
@@ -91,7 +96,7 @@ add_bibtex("book")
 #> 
 #> 
 #> This bibtex is already pasted on your clipboard.
-add_bibtex("manual")
+add_bibtex("manual", is_paste = FALSE)
 #> @manual{Li2019,
 #>   title = {add2bibtex: Add bib(La)tex},
 #>   subtitle = {Easily Adding Bibliographies and Citations},
@@ -103,20 +108,20 @@ add_bibtex("manual")
 #> 
 #> 
 #> This bibtex is already pasted on your clipboard.
-add_bibtex("online")
+add_bibtex("online", is_paste = FALSE)
 #> @online{Li2019,
 #>   author = {Jiaxiang Li},
 #>   title = {add2bibtex: Add bib(La)tex},
 #>   year = 2019,
 #>   howpublished = {add2bibtex},
 #>   url = {https://github.com/JiaxiangBU/add2bibtex},
-#>   urldate = {2020-01-17}
+#>   urldate = {2020-01-18}
 #> }
 #> 
 #> 
 #> 
 #> This bibtex is already pasted on your clipboard.
-add_bibtex("more")
+add_bibtex("more", is_paste = FALSE)
 #> More types are under development, please click
 #> 
 #> 
@@ -124,7 +129,7 @@ add_bibtex("more")
 ```
 
 ``` r
-add_wechat("https://mp.weixin.qq.com/s/2-1taZ5o4uzVcGMe5u4P-A")
+add_wechat("https://mp.weixin.qq.com/s/2-1taZ5o4uzVcGMe5u4P-A", is_paste = FALSE)
 #> Warning in max(.): 所有的参数都不存在; 回覆NA
 
 #> Warning in max(.): 所有的参数都不存在; 回覆NA
@@ -134,7 +139,7 @@ add_wechat("https://mp.weixin.qq.com/s/2-1taZ5o4uzVcGMe5u4P-A")
 #>   year = 2020,
 #>   howpublished = {TensorFlow},
 #>   url = {https://mp.weixin.qq.com/s/2-1taZ5o4uzVcGMe5u4P-A},
-#>   urldate = {2020-01-17}
+#>   urldate = {2020-01-18}
 #> }
 #> 
 #> 
