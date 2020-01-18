@@ -7,4 +7,7 @@
 
 0 errors | 0 warnings | 1 note
 
-* Make copy-paste feature optional.
+  Possibly mis-spelled words in DESCRIPTION:
+    Bibtex (2:15)
+
+This is not a mis-spelling, but one kind of citation style.
