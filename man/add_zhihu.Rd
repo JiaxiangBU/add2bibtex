@@ -4,10 +4,12 @@
 \alias{add_zhihu}
 \title{Add BibTex for a Zhihu URL.}
 \usage{
-add_zhihu(input = "")
+add_zhihu(input = "", is_paste = TRUE)
 }
 \arguments{
 \item{input}{The Zhihu shared text.}
+
+\item{is_paste}{Logical, by default \code{TRUE}}
 }
 \description{
 Add BibTex for a Zhihu URL.

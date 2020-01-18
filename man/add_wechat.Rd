@@ -4,10 +4,12 @@
 \alias{add_wechat}
 \title{Add BibTex for a WeChat article URL.}
 \usage{
-add_wechat(url = "")
+add_wechat(url = "", is_paste = TRUE)
 }
 \arguments{
 \item{url}{URL.}
+
+\item{is_paste}{Logical, by default \code{TRUE}}
 }
 \description{
 Add BibTex for a WeChat article URL.

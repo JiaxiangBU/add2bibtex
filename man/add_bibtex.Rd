@@ -4,10 +4,12 @@
 \alias{add_bibtex}
 \title{Bibtex and Biblatex Template}
 \usage{
-add_bibtex(type = "more")
+add_bibtex(type = "more", is_paste = TRUE)
 }
 \arguments{
 \item{type}{Character, by default \code{"more"}}
+
+\item{is_paste}{Logical, by default \code{TRUE}}
 }
 \value{
 Character.
@@ -16,10 +18,10 @@ Character.
 This function helps users to add Add a bib(La)tex template
 }
 \examples{
-add_bibtex("online")
+add_bibtex("online", is_paste = FALSE)
+add_bibtex("book", is_paste = FALSE)
+add_bibtex("manual", is_paste = FALSE)
 add_bibtex("more")
-add_bibtex("book")
-add_bibtex("manual")
 }
 \author{
 Jiaxiang Li

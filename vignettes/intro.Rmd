@@ -19,22 +19,25 @@ library(add2bibtex)
 ```
 
 ```{r}
-add_kaggle("https://www.kaggle.com/lijiaxiang/stacking")
+add_kaggle("https://www.kaggle.com/lijiaxiang/stacking", is_paste = FALSE)
 ```
 
 ```{r}
-add_datacamp("https://www.datacamp.com/courses/extreme-gradient-boosting-with-xgboost")
+add_datacamp(
+  "https://www.datacamp.com/courses/extreme-gradient-boosting-with-xgboost",
+  is_paste = FALSE
+)
 ```
 
 ```{r collapse=TRUE}
-add_bibtex("book")
-add_bibtex("manual")
-add_bibtex("online")
-add_bibtex("more")
+add_bibtex("book", is_paste = FALSE)
+add_bibtex("manual", is_paste = FALSE)
+add_bibtex("online", is_paste = FALSE)
+add_bibtex("more", is_paste = FALSE)
 ```
 
 ```{r}
-add_wechat("https://mp.weixin.qq.com/s/2-1taZ5o4uzVcGMe5u4P-A")
+add_wechat("https://mp.weixin.qq.com/s/2-1taZ5o4uzVcGMe5u4P-A", is_paste = FALSE)
 ```
 
 

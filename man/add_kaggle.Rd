@@ -4,14 +4,16 @@
 \alias{add_kaggle}
 \title{Add BibTex for a Kaggle URL.}
 \usage{
-add_kaggle(url = "")
+add_kaggle(url = "", is_paste = TRUE)
 }
 \arguments{
 \item{url}{URL.}
+
+\item{is_paste}{Logical, by default \code{TRUE}}
 }
 \description{
 Add BibTex for a Kaggle URL.
 }
 \examples{
-add_kaggle("https://www.kaggle.com/lijiaxiang/stacking")
+add_kaggle("https://www.kaggle.com/lijiaxiang/stacking", is_paste = FALSE)
 }

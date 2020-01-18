@@ -5,6 +5,7 @@ globalVariables(c(".", "text"))
 #' This function helps users to add Add a bib(La)tex template
 #'
 #' @param type Character, by default \code{"more"}
+#' @param is_paste Logical, by default \code{TRUE}
 #' @return Character.
 #' @author Jiaxiang Li
 #'
@@ -16,12 +17,11 @@ globalVariables(c(".", "text"))
 #' @import xml2
 #' @export
 #' @examples
-#' add_bibtex("online")
+#' add_bibtex("online", is_paste = FALSE)
+#' add_bibtex("book", is_paste = FALSE)
+#' add_bibtex("manual", is_paste = FALSE)
 #' add_bibtex("more")
-#' add_bibtex("book")
-#' add_bibtex("manual")
-# add_bibtex --------------------------------------------------------------
-add_bibtex <- function(type = 'more') {
+add_bibtex <- function(type = 'more', is_paste = TRUE) {
 
   if (type == 'more') {
     return(
@@ -86,17 +86,17 @@ if (type == 'manual') {
   )
 }
 
-clip_and_print(text)
+clip_and_print(text, is_paste = is_paste)
 }
 
 
 #' Add BibTex for a Kaggle URL.
 #' @param url URL.
+#' @param is_paste Logical, by default \code{TRUE}
 #' @export
 #' @examples
-#' add_kaggle("https://www.kaggle.com/lijiaxiang/stacking")
-# add_kaggle --------------------------------------------------------------
-add_kaggle <- function(url = '') {
+#' add_kaggle("https://www.kaggle.com/lijiaxiang/stacking", is_paste = FALSE)
+add_kaggle <- function(url = '', is_paste = TRUE) {
   if (!stringr::str_detect(url, 'kaggle')) {
     stop("It is not a kaggle url.")
   }
@@ -133,17 +133,17 @@ add_kaggle <- function(url = '') {
     .close = ">>"
   )
 
-  clip_and_print(output)
+  clip_and_print(output, is_paste = is_paste)
 }
 
 
 #' Add BibTex for a DataCamp URL.
 #' @param url URL.
+#' @param is_paste Logical, by default \code{TRUE}
 #' @export
 #' @examples
 #' add_datacamp("https://www.datacamp.com/courses/extreme-gradient-boosting-with-xgboost")
-# add_datacamp ------------------------------------------------------------
-add_datacamp <- function(url = '') {
+add_datacamp <- function(url = '', is_paste = TRUE) {
   if (!stringr::str_detect(url, 'datacamp')) {
     stop("It is not a datacamp url.")
   }
@@ -172,15 +172,15 @@ add_datacamp <- function(url = '') {
       title = title
     )
 
-  clip_and_print(output)
+  clip_and_print(output, is_paste = is_paste)
 }
 
 #' Add BibTex for a Zhihu URL.
 #' @import zeallot
 #' @param input The Zhihu shared text.
+#' @param is_paste Logical, by default \code{TRUE}
 #' @export
-add_zhihu <-
-  function(input = "") {
+add_zhihu <- function(input = "", is_paste = TRUE) {
     # library(zeallot)
     c(text, url) %<-% {
       input %>%
@@ -209,9 +209,8 @@ add_zhihu <-
         title = title
       )
 
-    clip_and_print(output)
+    clip_and_print(output, is_paste = TRUE)
   }
-
 
 glue_bibtex <-
   function(url, year, howpublished, author, title) {
@@ -236,3 +235,4 @@ glue_bibtex <-
     )
 
   }
+

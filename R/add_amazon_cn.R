@@ -120,11 +120,12 @@ get_amazon_cn_author <- function(html) {
 #' Create BibTex from an Amazon.cn book
 #'
 #' @param url URL.
+#' @param is_paste Logical, by default \code{TRUE}
 #' @importFrom xml2 read_html
 #' @importFrom glue glue
 #' @importFrom stringr str_replace_all
 #' @export
-add_amazon_cn <- function(url) {
+add_amazon_cn <- function(url, is_paste = TRUE) {
     html <-
         xml2::read_html(url)
     author <- get_amazon_cn_author(html)
@@ -137,7 +138,7 @@ add_amazon_cn <- function(url) {
     reference <-
         paste(author, year) %>% stringr::str_replace_all("[[:punct:]\\s]", "_")
 
-    bibtex_text <- glue::glue(
+    output <- glue::glue(
         "@book{<reference>,
     author    = {<author>},
     title     = {<title>},
@@ -150,6 +151,5 @@ add_amazon_cn <- function(url) {
         .open = "<",
         .close = ">"
     )
-    clip_and_print(bibtex_text)
-    invisible(bibtex_text)
+    clip_and_print(output, is_paste = TRUE)
 }

@@ -4,10 +4,12 @@
 \alias{add_amazon_cn}
 \title{Create BibTex from an Amazon.cn book}
 \usage{
-add_amazon_cn(url)
+add_amazon_cn(url, is_paste = TRUE)
 }
 \arguments{
 \item{url}{URL.}
+
+\item{is_paste}{Logical, by default \code{TRUE}}
 }
 \description{
 Create BibTex from an Amazon.cn book

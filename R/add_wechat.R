@@ -3,10 +3,11 @@ globalVariables(c(".", "text"))
 
 #' Add BibTex for a WeChat article URL.
 #' @param url URL.
+#' @param is_paste Logical, by default \code{TRUE}
 #' @export
 #' @examples
 #' add_wechat("https://mp.weixin.qq.com/s/2-1taZ5o4uzVcGMe5u4P-A")
-add_wechat <- function(url = '') {
+add_wechat <- function(url = '', is_paste = TRUE) {
     if (!stringr::str_detect(url, 'weixin')) {
         stop("It is not a weixin url.")
     }
@@ -43,8 +44,7 @@ add_wechat <- function(url = '') {
         .close = ">>"
     )
 
-    clip_and_print(output)
-    invisible(output)
+    clip_and_print(output, is_paste = TRUE)
 }
 
 #' @importFrom rvest html_nodes html_text

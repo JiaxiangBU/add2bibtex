@@ -4,10 +4,12 @@
 \alias{add_datacamp}
 \title{Add BibTex for a DataCamp URL.}
 \usage{
-add_datacamp(url = "")
+add_datacamp(url = "", is_paste = TRUE)
 }
 \arguments{
 \item{url}{URL.}
+
+\item{is_paste}{Logical, by default \code{TRUE}}
 }
 \description{
 Add BibTex for a DataCamp URL.
