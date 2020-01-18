@@ -15,5 +15,6 @@ add_datacamp(url = "", is_paste = TRUE)
 Add BibTex for a DataCamp URL.
 }
 \examples{
-add_datacamp("https://www.datacamp.com/courses/extreme-gradient-boosting-with-xgboost")
+add_datacamp("https://www.datacamp.com/courses/extreme-gradient-boosting-with-xgboost",
+is_paste = FALSE)
 }

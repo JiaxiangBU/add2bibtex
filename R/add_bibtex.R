@@ -142,7 +142,8 @@ add_kaggle <- function(url = '', is_paste = TRUE) {
 #' @param is_paste Logical, by default \code{TRUE}
 #' @export
 #' @examples
-#' add_datacamp("https://www.datacamp.com/courses/extreme-gradient-boosting-with-xgboost")
+#' add_datacamp("https://www.datacamp.com/courses/extreme-gradient-boosting-with-xgboost",
+#' is_paste = FALSE)
 add_datacamp <- function(url = '', is_paste = TRUE) {
   if (!stringr::str_detect(url, 'datacamp')) {
     stop("It is not a datacamp url.")

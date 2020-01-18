@@ -6,7 +6,7 @@ globalVariables(c(".", "text"))
 #' @param is_paste Logical, by default \code{TRUE}
 #' @export
 #' @examples
-#' add_wechat("https://mp.weixin.qq.com/s/2-1taZ5o4uzVcGMe5u4P-A")
+#' add_wechat("https://mp.weixin.qq.com/s/2-1taZ5o4uzVcGMe5u4P-A", is_paste = FALSE)
 add_wechat <- function(url = '', is_paste = TRUE) {
     if (!stringr::str_detect(url, 'weixin')) {
         stop("It is not a weixin url.")

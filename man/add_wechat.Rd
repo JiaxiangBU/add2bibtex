@@ -15,5 +15,5 @@ add_wechat(url = "", is_paste = TRUE)
 Add BibTex for a WeChat article URL.
 }
 \examples{
-add_wechat("https://mp.weixin.qq.com/s/2-1taZ5o4uzVcGMe5u4P-A")
+add_wechat("https://mp.weixin.qq.com/s/2-1taZ5o4uzVcGMe5u4P-A", is_paste = FALSE)
 }
