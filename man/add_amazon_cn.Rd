@@ -11,6 +11,12 @@ add_amazon_cn(url, is_paste = TRUE)
 
 \item{is_paste}{Logical, by default \code{TRUE}}
 }
+\value{
+The BibTex josn format text.
+}
 \description{
 Create BibTex from an Amazon.cn book
+}
+\examples{
+\donttest{add_amazon_cn("url", is_paste = FALSE)}
 }

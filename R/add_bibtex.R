@@ -2,7 +2,7 @@ globalVariables(c(".", "text"))
 
 #' Bibtex and Biblatex Template
 #'
-#' This function helps users to add Add a bib(La)tex template
+#' This function helps users to add Add a bib(La)tex template. It is pasted on the clipboard.
 #'
 #' @param type Character, by default \code{"more"}
 #' @param is_paste Logical, by default \code{TRUE}
@@ -93,6 +93,7 @@ clip_and_print(text, is_paste = is_paste)
 #' Add BibTex for a Kaggle URL.
 #' @param url URL.
 #' @param is_paste Logical, by default \code{TRUE}
+#' @return Character.
 #' @export
 #' @examples
 #' add_kaggle("https://www.kaggle.com/lijiaxiang/stacking", is_paste = FALSE)
@@ -140,6 +141,7 @@ add_kaggle <- function(url = '', is_paste = TRUE) {
 #' Add BibTex for a DataCamp URL.
 #' @param url URL.
 #' @param is_paste Logical, by default \code{TRUE}
+#' @return Character.
 #' @export
 #' @examples
 #' add_datacamp("https://www.datacamp.com/courses/extreme-gradient-boosting-with-xgboost",
@@ -180,7 +182,10 @@ add_datacamp <- function(url = '', is_paste = TRUE) {
 #' @import zeallot
 #' @param input The Zhihu shared text.
 #' @param is_paste Logical, by default \code{TRUE}
+#' @return Character.
 #' @export
+#' @examples
+#' \donttest{add_zhihu("url")}
 add_zhihu <- function(input = "", is_paste = TRUE) {
     # library(zeallot)
     c(text, url) %<-% {

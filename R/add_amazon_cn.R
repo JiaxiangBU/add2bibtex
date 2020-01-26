@@ -124,7 +124,10 @@ get_amazon_cn_author <- function(html) {
 #' @importFrom xml2 read_html
 #' @importFrom glue glue
 #' @importFrom stringr str_replace_all
+#' @return The BibTex josn format text.
 #' @export
+#' @examples
+#' \donttest{add_amazon_cn("url", is_paste = FALSE)}
 add_amazon_cn <- function(url, is_paste = TRUE) {
     html <-
         xml2::read_html(url)

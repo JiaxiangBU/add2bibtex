@@ -11,6 +11,9 @@ add_datacamp(url = "", is_paste = TRUE)
 
 \item{is_paste}{Logical, by default \code{TRUE}}
 }
+\value{
+Character.
+}
 \description{
 Add BibTex for a DataCamp URL.
 }

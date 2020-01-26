@@ -11,6 +11,12 @@ add_zhihu(input = "", is_paste = TRUE)
 
 \item{is_paste}{Logical, by default \code{TRUE}}
 }
+\value{
+Character.
+}
 \description{
 Add BibTex for a Zhihu URL.
+}
+\examples{
+\donttest{add_zhihu("url")}
 }

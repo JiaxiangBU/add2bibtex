@@ -1,5 +1,5 @@
 Package: add2bibtex
-Title: Add to Bibtex
+Title: Add to 'BibTex'
 Version: 0.5.2
 Authors@R:
     person(given = "Jiaxiang",
@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "alex.lijiaxiang@foxmail.com",
            comment = c(ORCID = "https://orcid.org/0000-0003-3196-6492"))
-Description: Easily Adding Bibliographies and Citations.
+Description: Easily adding bibliographies and citations.
 Depends: R (>= 3.5.0)
 License: MIT + file LICENSE
 Encoding: UTF-8

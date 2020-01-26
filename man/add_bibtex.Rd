@@ -15,7 +15,7 @@ add_bibtex(type = "more", is_paste = TRUE)
 Character.
 }
 \description{
-This function helps users to add Add a bib(La)tex template
+This function helps users to add Add a bib(La)tex template. It is pasted on the clipboard.
 }
 \examples{
 add_bibtex("online", is_paste = FALSE)

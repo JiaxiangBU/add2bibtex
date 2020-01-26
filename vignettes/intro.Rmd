@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 library(add2bibtex)
 ```
 
-```{r}
+```{r eval=FALSE}
 add_kaggle("https://www.kaggle.com/lijiaxiang/stacking", is_paste = FALSE)
 ```
 

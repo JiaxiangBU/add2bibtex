@@ -5,9 +5,11 @@
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
+0 errors | 0 warnings | 6 note
 
-  Possibly mis-spelled words in DESCRIPTION:
-    Bibtex (2:15)
-
-This is not a mis-spelling, but one kind of citation style.
+* Change the year of the LICENSE.
+* Change Description in the DESCRIPTION into normal case.
+* 'add_bibtex()' just pastes the text on the user's clipboard, and then the users change the metadata in the text.
+* Add the return and examples into the functions.
+* Use 'message' instead 'cat' to print the function message.
+* Write 'BibTex' into single quotes into Title.
